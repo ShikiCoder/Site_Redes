@@ -1,4 +1,46 @@
-node_modules/
-.env
+# ==== Python ====
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+venv/
+.venv/
+
+# ==== Node ====
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==== Environment Variables ====
+.env
+.env.local
+.env.*.local
+
+# ==== IDE / Editors ====
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ==== OS Files ====
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# ==== Logs ====
+logs/
+*.log
