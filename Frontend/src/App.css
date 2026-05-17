@@ -1,0 +1,166 @@
+/* Configuração Geral do Fundo */
+body {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #2c3e50;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 1000px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 255);
+}
+
+/* Alinhamento dos Inputs em Linha */
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+}
+
+.form input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #34495e;
+  color: white;
+  outline: none;
+}
+
+.form input::placeholder {
+  color: #bdc3c7;
+}
+
+/* Botão Conectar Estilo Verde */
+.form button {
+  padding: 12px 25px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.form button:hover {
+  background-color: #2ecc71;
+}
+
+/* Tabela Estilizada */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  text-align: center;
+  border-bottom: 2px solid #444;
+  padding: 15px;
+  color: #ecf0f1;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+td {
+  padding: 15px;
+  border-bottom: 1px solid #3d566e;
+}
+
+tr:hover {
+  background-color: #34495e;
+}
+
+/* Cores de Status */
+.status-up { color: #2ecc71; font-weight: bold; }
+.status-down { color: #e74c3c; font-weight: bold; }
+
+/* Modal / Popup */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #34495e;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #3498db;
+}
+
+.modal-content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 6px;
+  color: #2ecc71;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: monospace;
+}
+
+.modal-close {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.modal-close:hover {
+  background-color: #c0392b;
+}
+
+.analyze-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.analyze-btn:hover {
+  background-color: #2980b9;
+}

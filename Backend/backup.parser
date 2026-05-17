@@ -1,0 +1,71 @@
+import re
+
+def parse_show_ip_interface_brief(output):
+    """
+    Analisa a saída do comando 'show ip interface brief' e retorna
+    uma lista estruturada contendo os dados das interfaces.
+    """
+    interfaces = []
+    lines = output.splitlines()
+
+    for line in lines:
+        if not line.strip() or "Interface" in line or "---" in line:
+            continue
+
+        parts = line.split()
+        if len(parts) >= 4:
+            interface = parts[0]
+            ip_address = parts[1]
+            status = parts[-2]
+            protocol = parts[-1]
+
+            interfaces.append({
+                "interface": interface,
+                "ip": ip_address,
+                "status": status.upper(),
+                "protocol": protocol.upper()
+            })
+
+    return interfaces
+
+
+def parse_show_interface_status(output):
+    """
+    Analisa a saída do comando 'show interface status' e extrai
+    informações como porta, status, vlan e velocidade.
+    """
+    interfaces = []
+    lines = output.splitlines()
+
+    for line in lines:
+        if not line.strip() or "Port" in line or "----" in line:
+            continue
+
+        parts = line.split()
+        if len(parts) >= 3:
+            port = parts[0]
+            status = "UNKNOWN"
+            vlan = "Auto"
+            velocidade = "Auto"
+
+            # Busca dinâmica pela coluna de status para evitar desalinhamento
+            for part in parts:
+                p_lower = part.lower()
+                if p_lower in ["up", "down", "notconnect", "err-disabled", "disabled"]:
+                    status = part.upper()
+                    idx = parts.index(part)
+
+                    if idx + 1 < len(parts):
+                        vlan = parts[idx + 1]
+                    if idx + 2 < len(parts):
+                        velocidade = parts[idx + 2]
+                    break
+
+            interfaces.append({
+                "porta": port,
+                "status": status,
+                "vlan": vlan,
+                "velocidade": velocidade
+            })
+
+    return interfaces
