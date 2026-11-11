@@ -93,61 +93,250 @@ tr:hover {
 .status-up { color: #2ecc71; font-weight: bold; }
 .status-down { color: #e74c3c; font-weight: bold; }
 
-/* Modal / Popup */
-.modal-overlay {
+/* Chat Lateral (Drawer) */
+.chat-drawer {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: 0;
+  width: 420px;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: #2c3e50;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   z-index: 1000;
+  animation: slideIn 0.3s ease-out;
 }
 
-.modal-content {
-  background-color: #34495e;
-  padding: 25px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  color: #fff;
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
-.modal-content h3 {
-  margin-top: 0;
+.chat-header {
+  padding: 15px 20px;
+  background-color: #1a252f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #34495e;
+}
+
+.chat-header h3 {
+  margin: 0;
   color: #3498db;
+  font-size: 1rem;
 }
 
-.modal-content pre {
+.chat-close {
+  background: transparent;
+  border: none;
+  color: #bdc3c7;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.chat-close:hover {
+  color: #e74c3c;
+}
+
+/* Sistema de Abas */
+.chat-tabs {
+  display: flex;
+  background-color: #1a252f;
+  border-bottom: 1px solid #34495e;
+}
+
+.chat-tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: #bdc3c7;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+
+.chat-tab-btn:hover {
+  color: #fff;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.chat-tab-btn.active {
+  color: #3498db;
+  border-bottom: 3px solid #3498db;
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+/* Corpo do Chat */
+.chat-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-empty {
+  text-align: center;
+  color: #bdc3c7;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+.chat-message {
+  padding: 10px 14px;
+  border-radius: 8px;
+  max-width: 90%;
+}
+
+.ai-message {
+  background-color: #34495e;
+  border-left: 4px solid #3498db;
+  align-self: flex-start;
+}
+
+.user-message {
+  background-color: #2980b9;
+  align-self: flex-end;
+}
+
+.chat-message pre {
+  margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
-  background: #1a1a1a;
-  padding: 15px;
-  border-radius: 6px;
-  color: #2ecc71;
-  max-height: 300px;
-  overflow-y: auto;
-  font-family: monospace;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
 }
 
-.modal-close {
-  background-color: #e74c3c;
+/* Corpo do Histórico */
+.history-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #bdc3c7;
+  margin-bottom: 5px;
+  padding: 0 5px;
+}
+
+.clear-history-btn {
+  background: transparent;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.clear-history-btn:hover {
+  text-decoration: underline;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  background-color: #34495e;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.history-item:hover {
+  background-color: #3e5871;
+}
+
+.history-item.active {
+  border-left: 3px solid #3498db;
+  background-color: #3e5871;
+}
+
+.history-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #ecf0f1;
+}
+
+.history-time {
+  font-size: 0.75rem;
+  color: #bdc3c7;
+}
+
+/* Botão individual para apagar/fechar um histórico da lista */
+.delete-history-item-btn {
+  background: transparent;
+  border: none;
+  color: #bdc3c7;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.delete-history-item-btn:hover {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+/* Formulário de Envio */
+.chat-input-form {
+  padding: 15px;
+  background-color: #1a252f;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #34495e;
+}
+
+.chat-input-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #34495e;
+  color: white;
+  outline: none;
+}
+
+.chat-input-form button {
+  padding: 10px 15px;
+  background-color: #27ae60;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  margin-top: 15px;
-  transition: background 0.3s;
 }
 
-.modal-close:hover {
-  background-color: #c0392b;
+.chat-input-form button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.chat-input-form button:hover:not(:disabled) {
+  background-color: #2ecc71;
 }
 
 .analyze-btn {

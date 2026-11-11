@@ -4,7 +4,6 @@ from netmiko import ConnectHandler
 from parser import parse_show_interface_status
 import subprocess
 import json
-import os
 
 app = Flask(__name__)
 CORS(app)
@@ -55,19 +54,24 @@ def analisar_status():
     if not texto:
         return jsonify({'erro': 'Texto faltando'}), 400
 
+    # Prompt ajustado para proibir tabelas e forçar respostas curtas e diretas
     payload = {
-        "model": "llama-3.1-8b-instant",
+        "model": "openai/gpt-oss-120b",
         "messages": [
             {
                 "role": "system",
-                "content": "Você é um engenheiro SRE especialista em troubleshooting."
+                "content": (
+                    "Você é um assistente de redes objetivo. "
+                    "NUNCA crie tabelas. Dê respostas extremamente simples, diretas e curtas "
+                    "em texto corrido ou frases rápidas, indo direto ao ponto."
+                )
             },
             {
                 "role": "user",
-                "content": f"Analise o problema e dê resposta curta com causa + comandos + solução:\n\n{texto}"
+                "content": texto
             }
         ],
-        "temperature": 0.3
+        "temperature": 0.2
     }
 
     try:
@@ -75,7 +79,7 @@ def analisar_status():
             "curl", "-s", "-X", "POST",
             "https://api.groq.com/openai/v1/chat/completions",
             "-H", "Content-Type: application/json",
-            "-H", f"Authorization: Bearer {os.environ.get('GROQ_API_KEY', '')}",
+            "-H", "Authorization: Bearer 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",
             "-d", json.dumps(payload)
         ]
         
