@@ -5,16 +5,18 @@ Sistema de monitoramento de switches Cisco em tempo real com análise inteligent
 ## 📁 Estrutura do Projeto
 
 ```
-├── backend/          # API Flask (Python)
-│   ├── api.py        # Endpoints REST
-│   ├── parser.py     # Parser de saída do switch
-│   └── requirements.txt
-├── frontend/         # Interface React + Vite
-│   ├── src/
-│   └── public/
-└── scripts/          # Scripts CLI de configuração
-    ├── main.py       # Funções de conexão (Netmiko)
-    └── interface.py  # Menu interativo
+Site Definitivo/
+├── Backend/          # API Flask (Python)
+│   ├── api.py        # Endpoints REST e lógica principal
+│   ├── parser.py     # Processamento e análise de dados
+│   ├── requirements.txt
+│   └── chave.txt     # Configurações de autenticação
+├── Frontend/         # Interface React + Vite
+│   ├── src/          # Código-fonte da aplicação
+│   ├── public/       # Arquivos estáticos e ativos
+│   └── package.json
+└── Script/           # Scripts de execução e automação
+    └── app_web.py    # Rotinas auxiliares
 ```
 
 ## ⚙️ Pré-requisitos
