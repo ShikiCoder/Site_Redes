@@ -47,8 +47,8 @@ npm run dev
 ### Scripts CLI
 
 ```bash
-cd scripts
-python interface.py
+cd Script
+python app_web.py
 ```
 
 ## 🔧 Variáveis de Ambiente
