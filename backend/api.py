@@ -79,7 +79,7 @@ def analisar_status():
             "curl", "-s", "-X", "POST",
             "https://api.groq.com/openai/v1/chat/completions",
             "-H", "Content-Type: application/json",
-            "-H", "Authorization: Bearer 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",
+            "-H", "Authorization: Insira sua API aqui",
             "-d", json.dumps(payload)
         ]
         
